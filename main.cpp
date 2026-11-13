@@ -48,10 +48,59 @@ void displaystudent() {
 
 //Search Student
 void searchstudent() {
+    StudentRecord a;
+    int id_search;
+    cout << "Enter Student ID-# to search: ";
+    cin >> id_search;
+
+    if (a.id_num == id_search){
+        cout << "ID-#: " << a.id_num << "\n";
+        cout << "Student Name: " << a.name << "\n";
+        cout << "GWA: " << a.gwa << "\n"; 
+    return;
+    }
+    cout << "ID-# " << id_search << " not found in system. Please input again.\n"; 
 }
 
 //Update Student
 void updatestudent() {
+    StudentRecord a;
+    string id_update;
+    char opt;
+
+    do {
+    opt = ' ';
+
+    cout << "Enter Student ID-# to update record: ";
+    cin >> id_update;
+
+    if (a.id_num == id_update) {
+        cout << "ARE YOU SURE YOU WISH TO UPDATE THIS STUDENT RECORD? (Y/N): ";
+        cin >> opt;
+
+        switch(opt) {
+        case 'Y':
+            cout << "(CURRENT RECORD: " << a.name << ")\n";
+            cout << "Enter student name: ";
+            getline(cin, a.name);
+
+            cout << "(CURRENT RECORD: " << a.gwa << ")\n";
+            cout << "Enter new GWA (Grade Weighted Average): ";
+            cin >> a.gwa;
+            break;
+        case 'N':
+            cout << "Please enter Student ID-# again.";
+            break;
+
+        default:
+            cout << "Invalid Input. Please enter input again.";
+            continue;
+        }
+    } else {
+        cout << "Student ID-# not found. Please enter again.";
+        continue;
+    }
+    } while (opt == 'N');
 }
 
 //Delete Student 
