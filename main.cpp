@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
 #include "PainFluxDB/main.hpp"
+#include "PainFluxDB/DB.hpp"
 using namespace std;
 
 struct StudentRecord {
-    int id_num, gwa;
+    int id_num;
+    double gwa;
     string name;
-    char display;
-
+};
 
 //Add students 
 void addstudent() {
@@ -16,14 +17,23 @@ void addstudent() {
     cout << "════════════════════════════════════════════════════════════════════════'\n'";
     cout << "Student ID-#: ";
     cin >> a.id_num;
+
     cout << "Student Name: ";
-    cin >> a.name;
+    getline(cin >> ws, a.name);
+
     cout << "Student GWA: ";
     cin >> a.gwa;
+
+    if (addToDB(a)){
+        cout << "Student Record successfully added!\n";
+    } else {
+        cout << "ERROR: Student Record with ID-# " << a.id_num << " already exists.\n";
+    }
 }
 
 //Display students 
 void displaystudent() {
+    char display;
     bool end_display = false;
 
     while (end_display == false){
@@ -34,16 +44,18 @@ void displaystudent() {
 
     switch(display) {
         case 'Y':
+        case 'y':
             showAllDB();
             break;
         case 'N':
+        case 'n':
             end_display = true;
             break;
         default:
             cout << "Invalid input. Please type (Y/N) only.'\n'";
             continue;
+        };
     };
-};
 };
 
 //Search Student
@@ -53,7 +65,7 @@ void searchstudent() {
     cout << "Enter Student ID-# to search: ";
     cin >> id_search;
 
-    if (a.id_num == id_search){
+    if (searchDB(id_search, a)){
         cout << "ID-#: " << a.id_num << "\n";
         cout << "Student Name: " << a.name << "\n";
         cout << "GWA: " << a.gwa << "\n"; 
@@ -65,49 +77,76 @@ void searchstudent() {
 //Update Student
 void updatestudent() {
     StudentRecord a;
-    string id_update;
-    char opt;
+    int id_update;
+    string name_update;
+    double gwa_update;
 
-    do {
-    opt = ' ';
 
-    cout << "Enter Student ID-# to update record: ";
-    cin >> id_update;
+    while (true){
+        cout << "Enter Student ID-# to update student record (Press 0 to cancel update): ";
+        cin >> id_update;
 
-    if (a.id_num == id_update) {
-        cout << "ARE YOU SURE YOU WISH TO UPDATE THIS STUDENT RECORD? (Y/N): ";
-        cin >> opt;
+        if (id_update == 0) return;
 
-        switch(opt) {
-        case 'Y':
-            cout << "(CURRENT RECORD: " << a.name << ")\n";
-            cout << "Enter student name: ";
-            getline(cin, a.name);
+        if (searchDB(id_update, a)){
+            cout << "(CURRENT NAME: " << a.name << ")\n";
+            cout << "Enter updated student name: ";
+            getline(cin >> ws, name_update);
 
-            cout << "(CURRENT RECORD: " << a.gwa << ")\n";
-            cout << "Enter new GWA (Grade Weighted Average): ";
-            cin >> a.gwa;
-            break;
-        case 'N':
-            cout << "Please enter Student ID-# again.";
-            break;
-
-        default:
-            cout << "Invalid Input. Please enter input again.";
-            continue;
+            cout << "(CURRENT GWA: " << a.gwa << ")\n";
+            cout << "Enter updated GWA (General Weighted Average): ";
+            cin >> gwa_update;
         }
-    } else {
-        cout << "Student ID-# not found. Please enter again.";
-        continue;
+
+        if (updateDB(id_update, name_update, gwa_update)){
+            cout << "Student Record updated!\n";
+        } else {
+            cout << "Student record not found, please try again.\n";
+        }
     }
-    } while (opt == 'N');
 }
 
 //Delete Student 
 void deletestudent(){
-}
+    StudentRecord a;
+    int id_delete;
+    char opt;
 
-};
+    while (true) {
+        cout << "Enter Student ID-# to delete record (or 0 to cancel): ";
+        cin >> id_delete;
+
+        if (id_delete == 0) return;
+
+        if (searchDB(id_delete, a)){
+            cout << "\nRECORD:\n";
+            cout << "STUDENT ID-#: " << a.id_num << "\n";
+            cout << "NAME: " << a.name << "\n";
+            cout << "STUDENT GWA: " << a.gwa << "\n";
+            
+            cout << "ARE YOU SURE YOU WISH TO DELETE THIS RECORD? (Y/N): ";
+            cin >> opt;
+
+            switch (opt){
+                case 'Y':
+                case 'y':
+                    if (deleteDB(id_delete)) {
+                        cout << "STUDENT RECORD SUCCESSFULLY DELETED.\n";
+                    }
+                    return;
+                case 'N':
+                case 'n':
+                    cout << "CANCELLED.\n";
+                    return;
+                default:
+                    cout << "Invalid Input. Please enter only Y or N.\n";
+                    break;
+            }
+        } else {
+            cout << "Student ID-# not found in database. Please enter again.\n";
+        }
+    }
+}
 
 //Would this even be needed? I should make it better
 int main() {
