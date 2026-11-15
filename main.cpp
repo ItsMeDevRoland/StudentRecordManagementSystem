@@ -25,6 +25,7 @@ void addstudent() {
     cin >> a.gwa;
 
     if (addToDB(a)){
+    if (addStudent(a)){
         cout << "Student Record successfully added!\n";
     } else {
         cout << "ERROR: Student Record with ID-# " << a.id_num << " already exists.\n";
@@ -66,6 +67,7 @@ void searchstudent() {
     cin >> id_search;
 
     if (searchDB(id_search, a)){
+    if (searchStudent(id_search, a)){
         cout << "ID-#: " << a.id_num << "\n";
         cout << "Student Name: " << a.name << "\n";
         cout << "GWA: " << a.gwa << "\n"; 
@@ -89,6 +91,7 @@ void updatestudent() {
         if (id_update == 0) return;
 
         if (searchDB(id_update, a)){
+        if (searchStudent(id_update, a)){
             cout << "(CURRENT NAME: " << a.name << ")\n";
             cout << "Enter updated student name: ";
             getline(cin >> ws, name_update);
@@ -99,6 +102,7 @@ void updatestudent() {
         }
 
         if (updateDB(id_update, name_update, gwa_update)){
+        if (updateStudent(id_update, name_update, gwa_update)){
             cout << "Student Record updated!\n";
         } else {
             cout << "Student record not found, please try again.\n";
@@ -119,6 +123,7 @@ void deletestudent(){
         if (id_delete == 0) return;
 
         if (searchDB(id_delete, a)){
+        if (searchStudent(id_delete, a)){
             cout << "\nRECORD:\n";
             cout << "STUDENT ID-#: " << a.id_num << "\n";
             cout << "NAME: " << a.name << "\n";
@@ -131,6 +136,7 @@ void deletestudent(){
                 case 'Y':
                 case 'y':
                     if (deleteDB(id_delete)) {
+                    if (deleteStudent(id_delete)) {
                         cout << "STUDENT RECORD SUCCESSFULLY DELETED.\n";
                     }
                     return;
@@ -176,6 +182,8 @@ int main() {
                                 /____/                                      /____/                              
     )";
 
+    int choice = 0;
+
     cout << "· · ──────────────────────────────────────────────────────────── ꒰ঌ·✦·໒꒱ ──────────────────────────────────────────────────────────── · ·'\n'";
     cout << welcometext1 << endl;
     cout << welcometext2 << endl;
@@ -188,7 +196,43 @@ int main() {
     cout << "Nashe Ortega" << endl;
     cout << "James Daryll Valiente" << endl;
     cout << "James Ivan Trumata" << endl;
+    cout << "Seigfreid Catindoy" << endl;
     cout << "⊰═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════⊱ \n";
+    do { 
+        cout << "[1] Add Student Record\n";
+        cout << "[2] Display All Students\n";
+        cout << "[3] Search Student Record\n";
+        cout << "[4] Update Student Record\n";
+        cout << "[5] Delete Student Record\n";
+        cout << "[6] Exit\n";
 
+        cout << "Enter your choice [1-6]: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                addstudent();
+                break;
+            case 2:
+                displaystudent();
+                break;
+            case 3:
+                searchstudent();
+                break;
+            case 4:
+                updatestudent();
+                break;
+            case 5:
+                deletestudent();
+                break;
+            case 6:
+                cout << "[EXITING SYSTEM. GOODBYE!]\n";
+                break;
+            default:
+                cout << "Invalid choice. Please enter a valid choice from 1 to 6.\n";
+                break;
+        }
+    } while (choice != 6);
+    
 return 0;
 }
