@@ -2,6 +2,7 @@
 #include <string>
 #include "PainFluxDB/main.hpp"
 #include "PainFluxDB/DB.hpp"
+#include "PainFluxDB/DB.cpp"
 using namespace std;
 
 struct StudentRecord {
@@ -58,6 +59,7 @@ void displaystudent() {
         };
     };
 };
+}
 
 //Search Student
 void searchstudent() {
@@ -156,6 +158,7 @@ void deletestudent(){
 
 //Would this even be needed? I should make it better
 int main() {
+int main(){
 
     string welcometext1 = R"(
      _       __     __                            __           __  __       
@@ -234,5 +237,6 @@ int main() {
         }
     } while (choice != 6);
     
+
 return 0;
 }
