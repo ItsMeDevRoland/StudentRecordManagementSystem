@@ -30,6 +30,7 @@ void addstudent() {
         cout << "Student Record successfully added!\n";
     } else {
         cout << "ERROR: Student Record with ID-# " << a.id_num << " already exists.\n";
+        }
     }
 }
 
@@ -58,8 +59,8 @@ void displaystudent() {
             continue;
         };
     };
-};
 }
+
 
 //Search Student
 void searchstudent() {
@@ -76,10 +77,11 @@ void searchstudent() {
     return;
     }
     cout << "ID-# " << id_search << " not found in system. Please input again.\n"; 
+    }
 }
 
 //Update Student
-void updatestudent() {
+void updatestudent(){
     StudentRecord a;
     int id_update;
     string name_update;
@@ -108,6 +110,8 @@ void updatestudent() {
             cout << "Student Record updated!\n";
         } else {
             cout << "Student record not found, please try again.\n";
+                }
+            }
         }
     }
 }
@@ -152,12 +156,13 @@ void deletestudent(){
             }
         } else {
             cout << "Student ID-# not found in database. Please enter again.\n";
+                }
+            }
         }
     }
 }
 
 //Would this even be needed? I should make it better
-int main() {
 int main(){
 
     string welcometext1 = R"(
