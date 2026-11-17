@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
-#include "PainFluxDB/main.hpp"
 #include "PainFluxDB/DB.hpp"
-#include "PainFluxDB/DB.cpp"
 using namespace std;
 
 struct StudentRecord {
@@ -25,14 +23,14 @@ void addstudent() {
     cout << "Student GWA: ";
     cin >> a.gwa;
 
-    if (addToDB(a)){
-    if (addStudent(a)){
+
+    if (addstudent(a)){
         cout << "Student Record successfully added!\n";
     } else {
         cout << "ERROR: Student Record with ID-# " << a.id_num << " already exists.\n";
         }
     }
-}
+
 
 //Display students 
 void displaystudent() {
@@ -69,8 +67,7 @@ void searchstudent() {
     cout << "Enter Student ID-# to search: ";
     cin >> id_search;
 
-    if (searchDB(id_search, a)){
-    if (searchStudent(id_search, a)){
+    if (searchstudent(id_search, a)){
         cout << "ID-#: " << a.id_num << "\n";
         cout << "Student Name: " << a.name << "\n";
         cout << "GWA: " << a.gwa << "\n"; 
@@ -78,7 +75,6 @@ void searchstudent() {
     }
     cout << "ID-# " << id_search << " not found in system. Please input again.\n"; 
     }
-}
 
 //Update Student
 void updatestudent(){
@@ -94,8 +90,7 @@ void updatestudent(){
 
         if (id_update == 0) return;
 
-        if (searchDB(id_update, a)){
-        if (searchStudent(id_update, a)){
+        if (searchstudent(id_update, a)){
             cout << "(CURRENT NAME: " << a.name << ")\n";
             cout << "Enter updated student name: ";
             getline(cin >> ws, name_update);
@@ -106,7 +101,7 @@ void updatestudent(){
         }
 
         if (updateDB(id_update, name_update, gwa_update)){
-        if (updateStudent(id_update, name_update, gwa_update)){
+        if (updatestudent(id_update, name_update, gwa_update)){
             cout << "Student Record updated!\n";
         } else {
             cout << "Student record not found, please try again.\n";
@@ -114,7 +109,7 @@ void updatestudent(){
             }
         }
     }
-}
+
 
 //Delete Student 
 void deletestudent(){
@@ -128,7 +123,7 @@ void deletestudent(){
 
         if (id_delete == 0) return;
 
-        if (searchDB(id_delete, a)){
+
         if (searchStudent(id_delete, a)){
             cout << "\nRECORD:\n";
             cout << "STUDENT ID-#: " << a.id_num << "\n";
@@ -160,7 +155,6 @@ void deletestudent(){
             }
         }
     }
-}
 
 //Would this even be needed? I should make it better
 int main(){
@@ -212,7 +206,11 @@ int main(){
         cout << "[3] Search Student Record\n";
         cout << "[4] Update Student Record\n";
         cout << "[5] Delete Student Record\n";
-        cout << "[6] Exit\n";
+        cout << "[6] Sort Student Record\n";
+        cout << "[7] Stack Operations\n";
+        cout << "[8] Queue Operations\n";
+        cout << "[9] Student Statistics\n";
+        cout << "[10] Exit\n";
 
         cout << "Enter your choice [1-6]: ";
         cin >> choice;
