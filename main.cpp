@@ -157,7 +157,7 @@ void deletestudent() {
 int main() {
 
   string welcometext1 = R"(
-     _       __     __                            __           __  __       
+     _       __     __                             __           __  __       
     | |     / /__  / /________  ____ ___  ___     / /_____     / /_/ /_  ___ 
     | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \   / __/ __ \   / __/ __ \/ _ \
     | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/  / /_/ /_/ /  / /_/ / / /  __/
@@ -174,7 +174,7 @@ int main() {
     )";
 
   string welcometext3 =
-      R"(                                       __                     __                 __
+      R"(                                                           __                     __                 __
        ____ ___  ____ _____  ____ _____ ____  ____ ___  ___  ____  / /_   _______  _______/ /____  ____ ___  / /
       / __ `__ \/ __ `/ __ \/ __ `/ __ `/ _ \/ __ `__ \/ _ \/ __ \/ __/  / ___/ / / / ___/ __/ _ \/ __ `__ \/ / 
      / / / / / / /_/ / / / / /_/ / /_/ /  __/ / / / / /  __/ / / / /_   (__  ) /_/ (__  ) /_/  __/ / / / / /_/  
@@ -196,19 +196,22 @@ int main() {
           "══⊱ \n";
   cout << "By Group ____" << endl;
   cout << " " << endl;
-  cout << "Members:";
-  cout << "Roland Sibal" << endl;
-  cout << "Nashe Ortega" << endl;
-  cout << "James Daryll Valiente" << endl;
-  cout << "James Ivan Trumata" << endl;
-  cout << "Seigfreid Catindoy" << endl;
+
+  cout << "꧁𓊈𒆜MEMBERS𒆜𓊉꧂" << endl;
+  cout << " " << endl;
+
+  cout << "𓆩❤︎𓆪 Roland Sibal 𓆩❤︎𓆪" << endl;
+  cout << "✮⋆˙ Nashe Ortega ˙⋆✮" << endl;
+  cout << "ꨄ︎ James Daryll Valiente ꨄ︎" << endl;
+  cout << "ꨄ︎ James Ivan Trumata ꨄ︎" << endl;
+  cout << "ꨄ︎ Seigfreid Catindoy ꨄ︎" << endl;
   cout << "⊰═══════════════════════════════════════════════════════════════════"
           "════════════════════════════════════════════════════════════════════"
           "══⊱ \n";
   do {
     cout << "[1] Add Student Record\n";
     cout << "[2] Display All Students\n";
-    cout << "[3] Search Student Record\n";
+    cout << "[3] Search Student Record  \n";
     cout << "[4] Update Student Record\n";
     cout << "[5] Delete Student Record\n";
     cout << "[6] Sort Student Record\n";
@@ -217,7 +220,8 @@ int main() {
     cout << "[9] Student Statistics\n";
     cout << "[10] Exit\n";
 
-    cout << "Enter your choice [1-6]: ";
+    cout << " " << endl;
+    cout << "⤷Enter your choice [1-6]: ";
     cin >> choice;
 
     switch (choice) {
@@ -237,10 +241,20 @@ int main() {
       deletestudent();
       break;
     case 6:
-      cout << "[EXITING SYSTEM. GOODBYE!]\n";
+      cout << "⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘" << endl;
+      cout << "________   _______ _______ _____ _   _  _____     _______     _______ _______ ______ __  __       _____  ____   ____  _____  ______     ________ _ 
+              |  ____\ \ / /_   _|__   __|_   _| \ | |/ ____|   / ____\ \   / / ____|__   __|  ____|  \/  |     / ____|/ __ \ / __ \|  __ \|  _ \ \   / /  ____| |
+              | |__   \ V /  | |    | |    | | |  \| | |  __   | (___  \ \_/ / (___    | |  | |__  | \  / |    | |  __| |  | | |  | | |  | | |_) \ \_/ /| |__  | |
+              |  __|   > <   | |    | |    | | | . ` | | |_ |   \___ \  \   / \___ \   | |  |  __| | |\/| |    | | |_ | |  | | |  | | |  | |  _ < \   / |  __| | |
+              | |____ / . \ _| |_   | |   _| |_| |\  | |__| |   ____) |  | |  ____) |  | |  | |____| |  | |_   | |__| | |__| | |__| | |__| | |_) | | |  | |____|_|
+              |______/_/ \_\_____|  |_|  |_____|_| \_|\_____|  |_____/   |_| |_____/   |_|  |______|_|  |_(_)   \_____|\____/ \____/|_____/|____/  |_|  |______(_)
+              " << endl;
+      cout << "⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘⫘" << endl;
       break;
     default:
-      cout << "Invalid choice. Please enter a valid choice from 1 to 6.\n";
+      cout << "──────────────────────────────── ⭑ ☆ ⭑ ────────────────────────────────" << endl;
+      cout << "⚠︎ INVALID CHOICE. ⚠︎" << endl;
+      cout << "【 Please enter a valid choice from 1 to 6. 】 \n";
       break;
     }
   } while (choice != 6);
