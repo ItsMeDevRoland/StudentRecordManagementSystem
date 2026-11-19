@@ -613,7 +613,7 @@ int main() {
   cout << "✮⋆˙ Nashe Ortega ˙⋆✮" << endl;
   cout << "ꨄ︎ James Daryll Valiente ꨄ︎" << endl;
   cout << "ꨄ︎ James Ivan Trumata ꨄ︎" << endl;
-  cout << "ꨄ︎ Seigfreid Catindoy ꨄ︎" << endl;
+  cout << "ꨄ︎ Seigfred Catindoy ꨄ︎" << endl;
   cout << "⊰═══════════════════════════════════════════════════════════════════"
           "════════════════════════════════════════════════════════════════════"
           "══⊱ \n";
